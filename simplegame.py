@@ -1,17 +1,14 @@
 import pygame
 import time
-import random
-from pygame.locals import *
+
 pygame.font.init()
 font = pygame.font.SysFont("arial", 18)
 money_type = pygame.font.SysFont("impact", 30)
-win_font = pygame.font.SysFont("comic sans", 100)
 WIDTH, HEIGHT = 790, 700
 shop_width = 200
 obj_w, obj_h = 60, 60
 WIN = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("Cookie Clicker Not")
-BG = pygame.transform.scale(pygame.image.load("CHBG.jpg"), (WIDTH, HEIGHT))
 cookie_img = pygame.transform.scale(pygame.image.load("cookie.png"), (250, 250))
 oven_img = pygame.transform.scale(pygame.image.load("microwave....png"), (obj_w, obj_h))
 pin_img = pygame.transform.scale(pygame.image.load("pin.png"), (55, 55))
@@ -88,7 +85,6 @@ shp_web = shpbutton(572, 262, web_img)
 shp_baky = shpbutton(570, 320, baky_img)
 Francise = button(465, 600, francise_img)
 
-
 def drawinitial():
     WIN.fill((10, 100, 175))
     pygame.draw.rect(WIN, (20, 60, 195), (40, 0, 40, HEIGHT))
@@ -126,18 +122,15 @@ def main():
     global true_passive
     run = True
     clock = pygame.time.Clock()
-    win = False
     cost_oven = 12000
     cost_pin = 10
     cost_pan = 120
     cost_tools = 1500
     cost_mixer = 6000
-
     cost_gran = 30
     cost_bake = 240
     cost_web = 2000
     cost_baky = 10000
-
     passive = 0
 
     while run :
@@ -207,16 +200,7 @@ def main():
             cost_web = round(true_cost_web)
 
         if Francise.drawbutton() and mula >= 1000000:
-            win = True
-            WIN.fill((10, 100, 175))
-            win_txt = win_font.render(f"You are now super duper rich", 1, (255, 255, 255))
-            WIN.blit(win_txt, (200, 260))
-            while win == True:
-                for event in pygame.event.get():
-                    if event.type == pygame.QUIT:
-                        win = False
-                        run = False
-                        break
+            break
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
